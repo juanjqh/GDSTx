@@ -104,11 +104,16 @@
  SdFs SD;  //type 3
 #endif 
 
+#if defined(ARDUINO_ARCH_AURIX)
+   static SPIClass SPI_2;    //BOARD_SPI_SS1
+   #define SD_CONFIG SdSpiConfig(SD_PIN, DEDICATED_SPI, SD_SCK_MHZ(SetSDSpeed), &SPI_2)
+   SdFs SD;
+#endif 
 //FT81xmania team
 
 byte ft8xx_model;
 uint16_t BT8XX; // 0x00:FT800/0x10:FT810/0x11:FT811/0x12:FT812/0x13:FT813/0x15:BT815/0x16:BT816/0x17:BT817
-#include "transports/wiring.h"
+#include "../GDSTx/transports/wiring.h"
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -655,7 +660,7 @@ void GDClass::begin(int cs) {
   //byte external_crystal = 0;
   
   //#if defined(ARDUINO_TEENSY32)
-  #if defined(ARDUINO_ARCH_STM32)
+  #if defined(ARDUINO_ARCH_STM32) || (ARDUINO_ARCH_AURIX)
     //SD.begin( SdSpiConfig(SD_PIN, DEDICATED_SPI, SD_SCK_MHZ(36)) );
 	SD.begin(SD_CONFIG);
   #endif	

@@ -234,6 +234,10 @@
  
 #endif                              //*******************************************************STM32 boards Size-TFT, SPI-TFT-Speed, orientation, PD/Reset-pin (POR)
 
+#if defined(ARDUINO_ARCH_AURIX) 
+ #define SetSDSpeed 36000000
+ #define SD_PIN 5
+#endif
 
 //FT81xmania team
 

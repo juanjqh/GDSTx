@@ -57,8 +57,12 @@ delay(100);
 	pinMode(SD_PIN, OUTPUT);
     digitalWrite(SD_PIN, HIGH);
   #endif
-
+  
+#if defined(ARDUINO_ARCH_AURIX)
+    SPI.begin(BOARD_SPI_SS0_S1); 
+#else    
     SPI.begin();
+#endif    
     SPI.beginTransaction(SPISettings(SetSPISpeed, MSBFIRST, SPI_MODE0));
 
     hostcmd(0x00);
