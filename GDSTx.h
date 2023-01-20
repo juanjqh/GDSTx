@@ -53,7 +53,7 @@
 #define JPGsizeX   					 0        //under test
 #define JPGsizeY   					 0        //under test
 #define  H743    					 0        //under test
-#define POR_PIN  					 0        //under test 
+//#define POR_PIN  					 0        //under test 
 
 #ifdef TEENSYDUINO
 
